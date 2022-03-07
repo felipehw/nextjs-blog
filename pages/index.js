@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Link from "next/link";
+import Date from "../components/date";
 import Layout, { siteTitle } from "../components/layout";
 import { getSortedPostsData } from "../lib/posts";
 import utilStyles from '../styles/utils.module.css';
@@ -12,6 +14,11 @@ export async function getStaticProps() {
   };
 };
 
+/**
+ * @param {Object} param0 
+ * @param {import("../lib/posts").PostMetadata[]} param0.allPostsData
+ * @returns {JSX.Element}
+ */
 export default function Home({ allPostsData }) {
   return (
     <Layout home>
@@ -31,11 +38,13 @@ export default function Home({ allPostsData }) {
           {allPostsData.map(({id, date, title}) => {
             return (
             <li className={utilStyles.listItem} key={id}>
-              {title}
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                  <Date dateString={date} />
+              </small>
             </li>);
           })}
         </ul>
