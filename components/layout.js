@@ -10,8 +10,8 @@ export const siteTitle = 'Next.js Sample Website'
 /**
  * 
  * @param {Object} param0 
- * @property {any} param0.children
- * @property {any} [param0.home]
+ * @param {any} param0.children
+ * @param {boolean} [param0.home]
  * @returns {JSX.Element}
  */
 export default function Layout({ children, home }) {
